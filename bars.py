@@ -1,13 +1,12 @@
 import codecs
 import json
-from math import radians, sin, cos, asin, sqrt
-
 import sys
+from math import radians, sin, cos, asin, sqrt
 
 
 class Bar:
-    def __init__(self, name, seats, coordinates):
-        self.name = name
+    def __init__(self, bar_name, seats, coordinates):
+        self.name = bar_name
         self.seats = seats
         self.coordinates = coordinates
 
@@ -79,8 +78,8 @@ def get_closest_bar(bars, longitude, latitude):
 
 
 if __name__ == '__main__':
-    data = load_data(sys.argv[1])
-    bars = parse_bars(data)
+    raw_json = load_data(sys.argv[1])
+    bars = parse_bars(raw_json)
     closest_bar = get_closest_bar(bars, int(sys.argv[2]), int(sys.argv[3]))
     smallest_bar = get_smallest_bar(bars)
     biggest_bar = get_biggest_bar(bars)

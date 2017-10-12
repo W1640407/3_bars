@@ -1,0 +1,61 @@
+{
+  "features": [
+	{
+	  "geometry": {
+		"coordinates": [37.621587946152012, 55.765366956608361],
+		"type": "Point"
+	  },
+	  "properties": {
+		"DatasetId": 1796,
+		"VersionNumber": 2,
+		"ReleaseNumber": 2,
+		"RowId": "20a0b7c9-dad3-4af8-a2a2-08170f74379b",
+		"Attributes": {
+		  "global_id": 20660594,
+		  "Name": "Юнион Джек",
+		  "IsNetObject": "нет",
+		  "OperatingCompany": null,
+		  "AdmArea": "Центральный административный округ",
+		  "District": "Мещанский район",
+		  "Address": "Нижний Кисельный переулок, дом 3, строение 1",
+		  "PublicPhone": [
+			{
+			  "PublicPhone": "(495) 621-19-63"
+			}
+		  ],
+		  "SeatsCount": 30,
+		  "SocialPrivileges": "нет"
+		}
+	  },
+	  "type": "Feature"
+	}, {
+	  "geometry": {
+		"coordinates": [37.635709999610896, 55.805575000158512],
+		"type": "Point"
+	  },
+	  "properties": {
+		"DatasetId": 1796,
+		"VersionNumber": 2,
+		"ReleaseNumber": 2,
+		"RowId": "24d46780-a2f7-45b5-be96-71cae9bcb995",
+		"Attributes": {
+		  "global_id": 20660628,
+		  "Name": "Бар «Джонни Грин Паб»",
+		  "IsNetObject": "нет",
+		  "OperatingCompany": null,
+		  "AdmArea": "Северо-Восточный административный округ",
+		  "District": "Останкинский район",
+		  "Address": "проспект Мира, дом 91, корпус 1",
+		  "PublicPhone": [
+			{
+			  "PublicPhone": "(495) 602-45-85"
+			}
+		  ],
+		  "SeatsCount": 50,
+		  "SocialPrivileges": "нет"
+		}
+	  },
+	  "type": "Feature"
+	}
+  ]
+}
