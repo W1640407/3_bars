@@ -2,6 +2,7 @@ import codecs
 import json
 import sys
 from math import radians, sin, cos, asin, sqrt
+from operator import attrgetter
 
 
 class Bar:
@@ -9,6 +10,7 @@ class Bar:
         self.name = bar_name
         self.seats = seats
         self.coordinates = coordinates
+        self.distance = ()
 
     def __str__(self):
         return 'bar named {}, has {} seats and located in {} km'.format(
@@ -46,23 +48,11 @@ def parse_bars(json_data):
 
 
 def get_biggest_bar(bars):
-    biggest = None
-    max_seats = 0
-    for bar in bars:
-        if bar.seats > max_seats:
-            biggest = bar
-            max_seats = bar.seats
-    return biggest
+    return max(bars, key=attrgetter('seats'))
 
 
 def get_smallest_bar(bars):
-    smallest = None
-    min_seats = 10000
-    for bar in bars:
-        if bar.seats < min_seats:
-            smallest = bar
-            min_seats = bar.seats
-    return smallest
+    return min(bars, key=attrgetter('seats'))
 
 
 def get_closest_bar(bars, longitude, latitude):
