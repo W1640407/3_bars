@@ -1,6 +1,8 @@
+import argparse
 import codecs
 import json
 import sys
+from json import JSONDecodeError
 from math import radians, sin, cos, asin, sqrt
 from operator import attrgetter
 
@@ -28,6 +30,39 @@ class Bar:
         var_c = 2 * asin(sqrt(var_a))
         earth_radius = 6367
         return var_c * earth_radius
+
+
+def is_file_valid(filepath):
+    try:
+        json_object = load_data(filepath)
+    except ValueError :
+        msg = "%s is not a valid JSON file" % filepath
+        raise argparse.ArgumentTypeError(msg)
+    except FileNotFoundError:
+        msg = "%s is not found" % filepath
+        raise argparse.ArgumentTypeError(msg)
+    return json_object
+
+
+def resolve_args(argv):
+    parser = argparse.ArgumentParser(description='Find some bars.')
+    parser.add_argument('filename', type=is_file_valid,
+                        help='JSON file with info about bars', )
+    parser.add_argument('longitude', type=float,
+                        help='longitude of current GPS coordinates')
+    parser.add_argument('latitude', type=float,
+                        help='latitude of current GPS coordinates')
+    return parser.parse_args()
+
+
+def main(args):
+    bars = parse_bars(args.filename)
+    closest_bar = get_closest_bar(bars, args.longitude, args.latitude)
+    smallest_bar = get_smallest_bar(bars)
+    biggest_bar = get_biggest_bar(bars)
+    print("Biggest {}".format(biggest_bar))
+    print("Smallest {}".format(smallest_bar))
+    print("Nearest {}".format(closest_bar))
 
 
 def load_data(filepath):
@@ -61,11 +96,6 @@ def get_closest_bar(bars, longitude, latitude):
 
 
 if __name__ == '__main__':
-    raw_json = load_data(sys.argv[1])
-    bars = parse_bars(raw_json)
-    closest_bar = get_closest_bar(bars, int(sys.argv[2]), int(sys.argv[3]))
-    smallest_bar = get_smallest_bar(bars)
-    biggest_bar = get_biggest_bar(bars)
-    print("Biggest {}".format(biggest_bar))
-    print("Smallest {}".format(smallest_bar))
-    print("Nearest {}".format(closest_bar))
+    print(sys.argv)
+    args = resolve_args(sys.argv)
+    main(args)
