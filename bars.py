@@ -2,7 +2,6 @@ import argparse
 import codecs
 import json
 import sys
-from json import JSONDecodeError
 from math import radians, sin, cos, asin, sqrt
 from operator import attrgetter
 
@@ -35,7 +34,7 @@ class Bar:
 def is_file_valid(filepath):
     try:
         json_object = load_data(filepath)
-    except ValueError :
+    except ValueError:
         msg = "%s is not a valid JSON file" % filepath
         raise argparse.ArgumentTypeError(msg)
     except FileNotFoundError:
