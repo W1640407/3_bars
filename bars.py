@@ -17,7 +17,6 @@ class Bar:
             self.name, self.seats, "%.3f" % self.distance)
 
     def get_distance(self, longitude, latitude):
-        # convert decimal degrees to radians
         lon1, lat1, lon2, lat2 = map(radians,
                                      [longitude, latitude, self.coordinates[0],
                                       self.coordinates[1]])
