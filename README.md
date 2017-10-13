@@ -23,11 +23,6 @@ Closest bar named Bar «Jonnie Green Pub», has 50 seats and located in 0.000 km
 
 ```
 
-#### Run unit tests:
-```
-python test_bar.py
-```
-
 # Project Goals
 
 The code is written for educational purposes. Training course for web-developers - [DEVMAN.org](https://devman.org)
