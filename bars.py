@@ -96,6 +96,5 @@ def get_closest_bar(bars, longitude, latitude):
 
 
 if __name__ == '__main__':
-    print(sys.argv)
     args = resolve_args(sys.argv)
     main(args)
