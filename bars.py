@@ -56,15 +56,9 @@ def get_smallest_bar(bars):
 
 
 def get_closest_bar(bars, longitude, latitude):
-    closest_bar = None
-    min_distance = 20000
     for bar in bars:
-        distance = bar.get_distance(longitude, latitude)
-        bar.distance = distance
-        if distance < min_distance:
-            closest_bar = bar
-            min_distance = distance
-    return closest_bar
+        bar.distance = bar.get_distance(longitude, latitude)
+    return min(bars, key=attrgetter("distance"))
 
 
 if __name__ == '__main__':
