@@ -11,11 +11,10 @@ class Bar:
         self.name = bar_name
         self.seats = seats
         self.coordinates = coordinates
-        self.distance = ()
 
     def __str__(self):
-        return 'bar named {}, has {} seats and located in {} km'.format(
-            self.name, self.seats, "%.3f" % self.distance)
+        return 'bar named {}, has {} seats'.format(
+            self.name, self.seats)
 
     def get_distance(self, longitude, latitude):
         lon1, lat1, lon2, lat2 = map(radians,
@@ -89,9 +88,10 @@ def get_smallest_bar(bars):
 
 
 def get_closest_bar(bars, longitude, latitude):
-    for bar in bars:
-        bar.distance = bar.get_distance(longitude, latitude)
-    return min(bars, key=attrgetter("distance"))
+    # for bar in bars:
+    #     bar.distance = bar.get_distance(longitude, latitude)
+    # return min(bars, key=attrgetter("distance"))
+    return min(bars, key=lambda bar: bar.get_distance(longitude, latitude))
 
 
 if __name__ == '__main__':
